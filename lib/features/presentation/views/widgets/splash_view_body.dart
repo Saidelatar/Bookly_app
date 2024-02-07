@@ -14,6 +14,13 @@ class SplashViewBody extends StatelessWidget {
       children: [
         Center(
           child: Image.asset(AssetsData.logo),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        const Text(
+          'The mind needs books like the stomach needs food',
+          textAlign: TextAlign.center,
         )
       ],
     );
