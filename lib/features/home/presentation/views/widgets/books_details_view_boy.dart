@@ -1,4 +1,5 @@
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_books_details_view_app_bar.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/feature_books_item.dart';
 import 'package:flutter/material.dart';
 
 class BooksDetailsViewBody extends StatelessWidget {
@@ -6,11 +7,16 @@ class BooksDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+    var width = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
-          SafeArea(child: CustomBooksDetailsAppBar()),
+          const SafeArea(child: CustomBooksDetailsAppBar()),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.19),
+            child: const FeaturedBooksImage(),
+          ),
         ],
       ),
     );
