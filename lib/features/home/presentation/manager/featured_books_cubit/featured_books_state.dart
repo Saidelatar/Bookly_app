@@ -9,6 +9,8 @@ sealed class FeaturedBooksState extends Equatable {
 
 final class FeaturedBooksInitial extends FeaturedBooksState {}
 
+final class FeaturedBooksLoading extends FeaturedBooksState {}
+
 final class FeaturedBooksSuccessed extends FeaturedBooksState {
   final List<BooksModel> books;
   const FeaturedBooksSuccessed(this.books);
