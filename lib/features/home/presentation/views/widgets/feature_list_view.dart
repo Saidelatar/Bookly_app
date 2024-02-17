@@ -16,11 +16,16 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.25,
             child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
+                itemCount: state.books.length,
                 itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: FeaturedBooksImage(),
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: FeaturedBooksImage(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   );
                 }),
           );
