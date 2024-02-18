@@ -27,7 +27,7 @@ class BooksListViewItem extends StatelessWidget {
                 aspectRatio: 2.5 / 4,
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl: booksModel.volumeInfo.imageLinks.thumbnail,
+                  imageUrl: booksModel.volumeInfo.imageLinks?.thumbnail ?? '',
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
@@ -71,8 +71,8 @@ class BooksListViewItem extends StatelessWidget {
                     ),
                     const Spacer(),
                     BooksRating(
-                      rating: booksModel.volumeInfo.averageRating ?? 0,
-                      count: booksModel.volumeInfo.ratingsCount ?? 0,
+                      rating: booksModel.volumeInfo.averageRating ?? 4.5,
+                      count: booksModel.volumeInfo.ratingsCount ?? 254,
                     ),
                   ],
                 )

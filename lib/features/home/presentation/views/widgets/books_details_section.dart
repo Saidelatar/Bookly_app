@@ -1,11 +1,13 @@
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/Models/books_model/books_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/button_action.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/feature_books_item.dart';
 import 'package:flutter/material.dart';
 
 class BooksDetailsSection extends StatelessWidget {
-  const BooksDetailsSection({super.key});
+  final BooksModel booksModel;
+  const BooksDetailsSection({super.key, required this.booksModel});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +16,16 @@ class BooksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.22),
-          child: const FeaturedBooksImage(
-            imageUrl:
-                'https://www.bing.com/ck/a?!&&p=23b3bc71990779ceJmltdHM9MTcwODIxNDQwMCZpZ3VpZD0xMjQ3Mjk0YS0xNWEzLTYzZGUtM2U4ZS0zYTlkMTRkNDYyYzMmaW5zaWQ9NTY2MA&ptn=3&ver=2&hsh=3&fclid=1247294a-15a3-63de-3e8e-3a9d14d462c3&u=a1L2ltYWdlcy9zZWFyY2g_cT1ib29rcyBpbWFnZXMgYysrJkZPUk09SVFGUkJBJmlkPTlBMzJDMTFEOUIzMzlEOUI3MUVGMTZGNTIxOUQwNzc4MTlFMTYyNjI&ntb=1',
+          child: FeaturedBooksImage(
+            imageUrl: booksModel.volumeInfo.imageLinks?.thumbnail ?? '',
           ),
         ),
         const SizedBox(
           height: 43,
         ),
         Text(
-          'The Jungle Book',
+          booksModel.volumeInfo.title!,
+          textAlign: TextAlign.center,
           style: Styles.textStyle30.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -34,7 +36,7 @@ class BooksDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.7,
           child: Text(
-            'Rudyard Klipping',
+            booksModel.volumeInfo.authors?[0] ?? '',
             style: Styles.textStyle18.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,
@@ -44,15 +46,17 @@ class BooksDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        const BooksRating(
-          rating: 5,
-          count: 5,
+        BooksRating(
+          rating: booksModel.volumeInfo.averageRating ?? 4.5,
+          count: booksModel.volumeInfo.ratingsCount ?? 254,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         const SizedBox(
           height: 10,
         ),
-        const ButtonAction(),
+        ButtonAction(
+          booksModel: booksModel,
+        ),
       ],
     );
   }

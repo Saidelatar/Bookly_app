@@ -1,9 +1,11 @@
+import 'package:bookly_app/core/utils/routes.dart';
 import 'package:bookly_app/core/utils/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:bookly_app/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/feature_books_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -17,12 +19,20 @@ class SimilarBooksListView extends StatelessWidget {
           if (state is SimilarBooksSuccess) {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
+                itemCount: state.books.length,
                 itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    child: FeaturedBooksImage(
-                      imageUrl:
-                          'https://www.bing.com/ck/a?!&&p=23b3bc71990779ceJmltdHM9MTcwODIxNDQwMCZpZ3VpZD0xMjQ3Mjk0YS0xNWEzLTYzZGUtM2U4ZS0zYTlkMTRkNDYyYzMmaW5zaWQ9NTY2MA&ptn=3&ver=2&hsh=3&fclid=1247294a-15a3-63de-3e8e-3a9d14d462c3&u=a1L2ltYWdlcy9zZWFyY2g_cT1ib29rcyBpbWFnZXMgYysrJkZPUk09SVFGUkJBJmlkPTlBMzJDMTFEOUIzMzlEOUI3MUVGMTZGNTIxOUQwNzc4MTlFMTYyNjI&ntb=1',
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRoutes.kDetailsView,
+                            extra: state.books[index]);
+                      },
+                      child: FeaturedBooksImage(
+                        imageUrl: state.books[index].volumeInfo.imageLinks
+                                ?.thumbnail ??
+                            '',
+                      ),
                     ),
                   );
                 });
