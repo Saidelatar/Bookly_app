@@ -27,13 +27,12 @@ class ServerFauilre extends Fauilre {
         if (dioException.message!.contains('SocketExceptions')) {
           return ServerFauilre('No Internet Connection');
         } else {
-          return ServerFauilre('UnExpected Error , please try later');
+          return ServerFauilre('No Internet Connection');
         }
       case DioExceptionType.unknown:
         if (dioException.error == true) {
           return ServerFauilre(dioException.error.toString());
-        }else 
-        {
+        } else {
           return ServerFauilre('Opps ,There Was an Error, please try again');
         }
       default:

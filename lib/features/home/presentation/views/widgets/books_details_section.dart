@@ -16,7 +16,7 @@ class BooksDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: width * 0.22),
           child: const FeaturedBooksImage(
             imageUrl:
-                'https://th.bing.com/th?id=OIP.I90I3hpUifO0KDN3boBTywHaJ4&w=216&h=288&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2',
+                'https://www.bing.com/ck/a?!&&p=23b3bc71990779ceJmltdHM9MTcwODIxNDQwMCZpZ3VpZD0xMjQ3Mjk0YS0xNWEzLTYzZGUtM2U4ZS0zYTlkMTRkNDYyYzMmaW5zaWQ9NTY2MA&ptn=3&ver=2&hsh=3&fclid=1247294a-15a3-63de-3e8e-3a9d14d462c3&u=a1L2ltYWdlcy9zZWFyY2g_cT1ib29rcyBpbWFnZXMgYysrJkZPUk09SVFGUkJBJmlkPTlBMzJDMTFEOUIzMzlEOUI3MUVGMTZGNTIxOUQwNzc4MTlFMTYyNjI&ntb=1',
           ),
         ),
         const SizedBox(
@@ -48,6 +48,9 @@ class BooksDetailsSection extends StatelessWidget {
           rating: 5,
           count: 5,
           mainAxisAlignment: MainAxisAlignment.center,
+        ),
+        const SizedBox(
+          height: 10,
         ),
         const ButtonAction(),
       ],
