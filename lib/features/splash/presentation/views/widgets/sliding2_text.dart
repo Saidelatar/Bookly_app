@@ -16,7 +16,7 @@ class Sliding2Animation extends StatelessWidget {
         return SlideTransition(
           position: slidingAnimation,
           child: const Text(
-            'The mind needs books like the stomach needs food',
+            'Read Free Books',
             textAlign: TextAlign.center,
           ),
         );
