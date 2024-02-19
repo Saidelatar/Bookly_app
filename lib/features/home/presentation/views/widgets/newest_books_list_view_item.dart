@@ -55,7 +55,7 @@ class BooksListViewItem extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  booksModel.volumeInfo.authors![0],
+                  booksModel.volumeInfo.authors?[0] ?? 'David Packer',
                   style: Styles.textStyle14,
                 ),
                 const SizedBox(
@@ -65,7 +65,7 @@ class BooksListViewItem extends StatelessWidget {
                   children: [
                     Text(
                       'free',
-                      style: Styles.textStyle20.copyWith(
+                      style: Styles.textStyle16.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),

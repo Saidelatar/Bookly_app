@@ -25,7 +25,7 @@ class ButtonAction extends StatelessWidget {
           ),
           CustomButton(
             onPressed: () async {
-              launchCustomUrl(context, "booksModel.volumeInfo.previewLink!");
+              launchCustomUrl(context, booksModel.volumeInfo.previewLink ?? '');
             },
             text: getText(booksModel),
             textColor: Colors.white,
